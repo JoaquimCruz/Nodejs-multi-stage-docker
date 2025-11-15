@@ -10,7 +10,7 @@ This repository demonstrates the optimization of a Node.js (TypeScript/Express) 
 
 ## 🚀 Project Goal
 
-This project was created as a practical demonstration for a "Contemporary Operating Systems" course assignment. The main goal is to practically implement and analyze key Docker concepts, including:
+This project was created as a practical demonstration for Operational Systems course assignment. The main goal is to practically implement and analyze key Docker concepts, including:
 
 * **Image Management:** Demonstrating how to build optimized, lightweight images.
 * **Process Isolation:** Running the application in a sandboxed environment.

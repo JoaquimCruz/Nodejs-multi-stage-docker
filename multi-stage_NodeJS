@@ -1,0 +1,37 @@
+Dockerizing NodeJs application with multi-stage build
+
+To execute several containers on the same OS, Docker maker use of resource isolation in the OS kernel. Containers are like lightweight apartments applications. Unlike virtual machines that require full operating systems, containers share the linux kernel while keeping app separate. The multi-stage build is a feature tha qas introduced in Docker 17.05 (may, 2017), that allow us to build smaller final container images by specifying multiple helper imagers (stages) within the same DockerFile (docker-compose.yml). Each stage is used to complete a tasl. For example, building the project. 
+
+Why is it better than the normal stage build? 
+
+Using multi-stage build allows each FROM instructions to copy artifacts from the previous build stages. So, it removes all the intermediate steps such as downloading the code, installing dependencies, testing, building... etc from the final image.
+
+
+STEPS: 
+
+First we need to create the first docker file, which name is DockerFile.simple, that will do not implement the multi-stage build. This docker file is just to build the nodeJS dependecies and show how heavy can they be. As a matter of a fact, the size of the complete NodeJS application image is 1.16 GB. 
+
+The command to build is: $ docker build -f DockerFile.simple -t app-node:simple .
+
+Second step is create the second docker file, which name is Dockerfile, that will implement the multi-stage build. This docker file has 2 stages. The first one is the builder stage and the second one is the dev-dependencies stage. 
+
+
+The command to build is: docker build -t app-node:otimizado . 
+
+The comparion shows us that the multi-staged version is better than the simple version. 
+
+Using the command "$ docker images app-node*" we can see that the optimazed version has 131 mb of size, representing 1/10 of the size of the simple one (1.16 GB). 
+
+The third step is to create a simple docker-compose.yml file to expose the nodejs api in the 3000 port. 
+
+In this file we have to specif the docker file we will use to build (in our case the Dockerfile). 
+
+
+By doing this, use the command: "$docker-compose up --build -d", to build and up the container. 
+
+TO finish and the the application runing, access: http://localhost:3000/
+
+
+To verify the docker components as the containers and images, just use some basic docker commands like ps, network ... etc. 
+
+ 

@@ -1,0 +1,22 @@
+# A simple doker file that does not implement a multi-stage NodeJs build. 
+
+FROM node:18
+
+
+
+WORKDIR /app
+
+
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

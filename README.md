@@ -32,7 +32,6 @@ This project contrasts two primary methods for Dockerizing a Node.js application
     * **Stage 2 (Production):** Starts from a clean, lightweight image (e.g., `node:18-alpine`) and copies *only* the compiled JavaScript and production dependencies from the "builder" stage.
     * **Result:** A minimal, secure, production-ready image (e.g., ~131 MB).
 
-This repository also includes the legacy "Builder Pattern" (`Dockerfile.build`, `Dockerfile.prod`, `build.sh`) to show the historical evolution of this optimization technique.
 
 ## 🏁 How to Run
 
